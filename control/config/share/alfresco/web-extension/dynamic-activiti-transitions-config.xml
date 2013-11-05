@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<alfresco-config>
+    <config>
+        <forms>
+            <dependencies>
+                <js src="/components/form/workflow/dynamic-activiti-transitions.js" />
+            </dependencies>  
+        </forms>
+    </config>
+</alfresco-config>

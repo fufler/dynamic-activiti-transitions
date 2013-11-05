@@ -1,0 +1,19 @@
+<project basedir="." default="dist-jars">
+	<!-- Load external properties -->
+	<property file="${user.home}/build.properties" />
+	<property file="${user.home}/.build.properties" />
+	<property file="build.properties" />
+
+	<target name="clean" description="Clean out all build directories">
+		<subant target="clean">
+			<fileset dir="control" includes="build.xml" />
+			<fileset dir="demo-workflow" includes="build.xml" />
+		</subant>
+	</target>
+	<target name="dist-jars" description="Dist jars for both control and workflow">
+		<subant target="dist-jars">
+			<fileset dir="control" includes="build.xml" />
+			<fileset dir="demo-workflow" includes="build.xml" />
+		</subant>
+	</target>
+</project>

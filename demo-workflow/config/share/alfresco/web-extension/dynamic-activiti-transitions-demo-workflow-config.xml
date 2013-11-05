@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<alfresco-config>
+  <config evaluator="string-compare" condition="activiti$dynamicActivitiTransitionsDemoWorkflow">
+    <forms>
+      <form>
+        <field-visibility>
+          <show id="packageItems"/>
+        </field-visibility>
+        <appearance>
+          <set id="items" appearance="title" label-id="workflow.set.items"/>
+          <field id="packageItems" set="items"/>
+        </appearance>
+      </form>
+    </forms>
+  </config>
+  <config evaluator="task-type" condition="sn:startTask">
+    <forms>
+      <form>
+        <field-visibility>
+          <show id="packageItems"/>
+        </field-visibility>
+        <appearance>
+          <set id="items" appearance="title" label-id="workflow.set.items"/>
+          <field id="packageItems" set="items"/>
+        </appearance>
+      </form>
+    </forms>
+  </config>
+  <config evaluator="task-type" condition="sn:utTask">
+    <forms>
+      <form>
+        <field-visibility>
+          <show id="sn:prop1"/>
+          <show id="sn:prop2"/>
+          <show id="sn:propOutcome"/>
+        </field-visibility>
+        <appearance>
+          <set id="info" appearance="" label-id="workflow.set.task.info"/>
+          <set id="other" appearance="title" label-id="workflow.set.other"/>
+          <set id="items" appearance="title" label-id="workflow.set.items"/>
+          <set id="response" appearance="title" label-id="workflow.set.response"/>
+          <field id="sn:prop1" label="Property 1" set="other" mandatory="true"/>
+          <field id="sn:prop2" label="Property 2" set="other" mandatory="true"/>
+          <field id="sn:propOutcome" set="response">
+			<control template="/org/alfresco/components/form/controls/workflow/dynamic-activiti-transitions.ftl">
+				<control-param name="mandatoryFields.UT1">sn:prop1</control-param>
+				<control-param name="mandatoryFields.UT2">sn:prop2</control-param>
+			</control>
+		</field>
+        </appearance>
+      </form>
+    </forms>
+  </config>
+</alfresco-config>

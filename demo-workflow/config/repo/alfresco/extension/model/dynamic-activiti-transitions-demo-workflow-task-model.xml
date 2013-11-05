@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- xsi:schemaLocation="http://www.alfresco.org/model/dictionary/1.0 modelSchema.xsd" -->
+<model name="sn:simpleWorkflowModel" xmlns="http://www.alfresco.org/model/dictionary/1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+
+	<imports>
+		<import uri="http://www.alfresco.org/model/dictionary/1.0"
+			prefix="d" />
+		<import uri="http://www.alfresco.org/model/bpm/1.0" prefix="bpm" />
+	</imports>
+
+	<namespaces>
+		<namespace uri="SummitNow" prefix="sn" />
+	</namespaces>
+
+	<types>
+		<type name="sn:startTask">
+			<parent>bpm:startTask</parent>
+		</type>
+
+
+		<type name="sn:utTask">
+			<parent>bpm:activitiOutcomeTask</parent>
+			<properties>
+				<property name="sn:prop1">
+					<type>d:text</type>
+				</property>
+				<property name="sn:prop2">
+					<type>d:text</type>
+				</property>		
+				<property name="sn:propOutcome">
+					<type>d:text</type>
+					<constraints>
+						<constraint type="LIST">
+                            <parameter name="allowedValues">
+                                <list>
+                                    <value>UT1</value>
+                                    <value>UT2</value>
+                                </list>
+                            </parameter>
+                        </constraint>
+					</constraints>
+				</property>			
+			</properties>
+			<overrides>
+                <property name="bpm:outcomePropertyName">
+                    <default>{SummitNow}propOutcome</default>
+                </property>
+            </overrides>
+		</type>
+
+	</types>
+</model>
+   
