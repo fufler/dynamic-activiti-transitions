@@ -13,14 +13,15 @@
    new Alfresco.DynamicActivitiTransitions("${fieldHtmlId}").setOptions(
    {
       currentValue: "${field.control.params.options?js_string}",
-	  mandatoryFields : {  <#list mandatoryFieldsParams as param>
-							<#assign fields=field.control.params["mandatoryFields."+param]?split(",") />
-							"${param}": [
-								<#list fields as field>
-									"${field}"<#if field_has_next>,</#if>
-								</#list>
-							]<#if param_has_next>,</#if>
-						</#list>},
+	    mandatoryFields : {
+        <#list mandatoryFieldsParams as param>
+					<#assign fields=field.control.params["mandatoryFields."+param]?split(",") />
+					"${param}": [
+						<#list fields as field>
+							"${field}"<#if field_has_next>,</#if>
+						</#list>
+					]<#if param_has_next>,</#if>
+				</#list>},
       hiddenFieldName: "${field.name}"
    }).setMessages(
       ${messages}
