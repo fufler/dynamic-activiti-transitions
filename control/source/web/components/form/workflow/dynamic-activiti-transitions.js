@@ -162,6 +162,9 @@
             // patch the right form
             if (el.id != form.formId)
                 return;
+            // unsubscrive from event to prevent invocation of callback
+            // for any other form that may be displayed later
+            YAHOO.Bubbling.unsubscribe('afterFormRuntimeInit', this._patchFormsRuntime, this);
             // store for futher use
             this.jsForm = form;
             this.form = el;
