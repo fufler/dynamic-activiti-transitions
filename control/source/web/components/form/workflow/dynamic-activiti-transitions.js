@@ -186,6 +186,9 @@
         {
             // skip validations on submission
             this.jsForm._runValidations = function() { return true; };
+            // disable all transitions buttons to prevent second submission
+            for (var i in this.buttons)
+                this.buttons[i].set('disabled', true);
             Alfresco.DynamicActivitiTransitions.superclass.onClick.call(this, e, p_obj);
         },
 
